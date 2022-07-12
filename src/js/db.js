@@ -1,3 +1,5 @@
+import {wordHistoryElement} from './selectors.js';
+
 function postData (data) {
   fetch('https://learnenglish-app-default-rtdb.firebaseio.com/words.json', {
     method: 'POST',
@@ -9,8 +11,6 @@ function postData (data) {
     .then(response => response.json())
     .then(response => console.log(response))
 }
-
-const wordHistoryElement = document.querySelector('.word-history');
 
 function getData () {
   fetch('https://learnenglish-app-default-rtdb.firebaseio.com/words.json')
