@@ -10,7 +10,7 @@ function postData (data) {
     .then(response => console.log(response))
 }
 
-const modalContentElement = document.querySelector('.modal-content');
+const wordHistoryElement = document.querySelector('.word-history');
 
 function getData () {
   fetch('https://learnenglish-app-default-rtdb.firebaseio.com/words.json')
@@ -18,9 +18,9 @@ function getData () {
     .then(json => Object.values(json))
     .then(words => {
       words.forEach(arr =>
-        arr.forEach(word =>
-          modalContentElement.innerHTML += `<span class="chosen-word">${word.word}</span>`
-        ))
+        arr.forEach((word) =>
+          wordHistoryElement.innerHTML += `<span class="chosen-word">${word.word}</span>`
+      ))
     })
 }
 

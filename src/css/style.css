@@ -27,6 +27,10 @@ header {
   background-color: #2f3e46;
   border-bottom: 1px solid #84a98c;
 }
+  .logo-text {
+    color: #cad2c5;
+    text-decoration: none;
+  }
 
 .row {
   display: flex;
@@ -43,6 +47,25 @@ header {
   .row-2 {
     height: 50vh;
   }
+
+  .row-3 {
+    display: none;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .row-3 > h3 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .col.word-history {
+    height: auto;
+  }
+    .col.word-history > span.chosen-word {
+      margin-bottom: 10px;
+    }
 
 .col {
   display: flex;
@@ -63,6 +86,7 @@ header {
     background-color: #84a98c;
     padding-top: 20px;
     align-items: center;
+    justify-content: flex-end;
   }
 
 .input-text-form {
@@ -97,6 +121,7 @@ header {
 .btn-save {
   width: 80px;
   height: 50px;
+  margin-right: 20px;
   color: #cad2c5;
   background-color: #2f3e46;
   border: 1px solid #84a98c;

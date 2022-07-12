@@ -1,12 +1,19 @@
 import {postData, getData} from './db.js';
 import changeModalWindow from './modal-window.js';
 
+const logoTextElement = document.querySelector('.logo-text');
 const inputTextElement = document.querySelector('input.input-text');
 const inputTextButton = document.querySelector('.btn-input-text');
 const outputTextElement = document.querySelector('.output-text');
 const chosenWordsElement = document.querySelector('.chosen-words');
 let outputWordElement = Array.from(document.querySelectorAll('.output-words'));
 const saveButton = document.querySelector('.btn-save');
+
+
+const firstRowElement = document.querySelector('.row-1');
+const secondRowElement = document.querySelector('.row-2');
+const wordHistoryButton = document.querySelector('.btn-history-words');
+const wordHistoryRowElement = document.querySelector('.row-3--history');
 
 export default class WordDictionary {
   index = 1;
@@ -77,7 +84,23 @@ export default class WordDictionary {
   }
 
   getWords () {
-    getData();
+    wordHistoryButton.addEventListener('click', (evt) => {
+      evt.preventDefault();
+
+      firstRowElement.style.display = 'none';
+      secondRowElement.style.display = 'none';
+      wordHistoryRowElement.style.display = 'flex';
+
+      getData();
+    });
+
+    logoTextElement.addEventListener('click' , (evt) => {
+      evt.preventDefault();
+
+      firstRowElement.style.display = 'flex';
+      secondRowElement.style.display = 'flex';
+      wordHistoryRowElement.style.display = 'none';
+    });
   }
 
   cliclkModal () {
