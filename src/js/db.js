@@ -1,4 +1,4 @@
-import {wordHistoryElement} from './selectors.js';
+const wordHistoryElement = document.querySelector('.word-history');
 
 function postData (data) {
   fetch('https://learnenglish-app-default-rtdb.firebaseio.com/words.json', {
