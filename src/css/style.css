@@ -1,0 +1,153 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+	}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #354f52;
+  color: #cad2c5;
+}
+  
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 20px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20vh;
+  background-color: #2f3e46;
+  border-bottom: 1px solid #84a98c;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+  .row-1 {
+    height: 28vh;
+  }
+
+  .row-2 {
+    height: 50vh;
+  }
+
+.col {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+  .output-text, .chosen-words {
+    width: 45vw;
+    background-color: #84a98c;
+    padding-top: 20px;
+  }
+
+  .save-words {
+    width: 10vw;
+    background-color: #84a98c;
+    padding-top: 20px;
+    align-items: center;
+  }
+
+.input-text-form {
+  width: 50%;
+  text-align: center;
+}
+
+.input-text {
+  width: 50%;
+  height: 38px;
+  border: 1px solid #84a98c;
+}
+
+.btn-input-text {
+  width: 50px;
+  height: 40px;
+  margin-left: -10px;
+  color: #cad2c5;
+  background-color: #2f3e46;
+  border: 1px solid #84a98c;
+  border-radius: 0 10px 10px 0;
+}
+
+.btn-history-words {
+  width: 80px;
+  height: 30px;
+  color: #cad2c5;
+  background-color: #2f3e46;
+  border: 1px solid #84a98c;
+}
+
+.btn-save {
+  width: 80px;
+  height: 50px;
+  color: #cad2c5;
+  background-color: #2f3e46;
+  border: 1px solid #84a98c;
+}
+
+.output-word {
+  color: #fff;
+  background-color: #52796f;
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #2f3e46;
+}
+  .selected {
+    background-color: #cad2c5;
+  }
+
+.chosen-word {
+  color: #fff;
+  background-color: #fe6d73;
+  padding: 8px;
+  margin-left: 10px;
+}
+
+.modal-window {
+  display: none;
+  width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+  .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+  }
+    .modal-content > .chosen-word {
+      margin-bottom: 10px;
+    }
+
+  .modal-close {
+    width: 45px;
+    font-size: 24px;
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    height: 45px;
+    
+  }
