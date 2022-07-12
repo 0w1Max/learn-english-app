@@ -1,5 +1,4 @@
 import {postData, getData} from './db.js';
-import changeModalWindow from './modal-window.js';
 
 const logoTextElement = document.querySelector('.logo-text');
 const inputTextElement = document.querySelector('input.input-text');
@@ -59,8 +58,15 @@ export default class WordDictionary {
       word.addEventListener('click', () => {
         word.classList.add('selected');
         chosenWordsElement.querySelector('h3').textContent = '';
-        chosenWordsElement.innerHTML += `<span class="chosen-word">${word.textContent}</span>`;
+
+        const chosenWordsTemplate =
+          `<span class="chosen-word">${word.textContent}</span>
+          <span class="chosen-word--translate">translate</span>`;
+
+        chosenWordsElement.innerHTML += chosenWordsTemplate;
         this.allSelectedWords.push(word.textContent);
+
+        this.wordTranslation();
 
         console.log(this.allSelectedWords);
       });
@@ -101,8 +107,21 @@ export default class WordDictionary {
     });
   }
 
-  cliclkModal () {
-    changeModalWindow();
+  wordTranslation () {
+    const chosenWord = Array.from(document.querySelectorAll('.chosen-word'));
+    const chosenWordTranslate = document.querySelectorAll('.chosen-word--translate');
+
+    chosenWord.forEach((word, index) => {
+      word.addEventListener('click', () => {
+        word.style.display = 'none';
+        chosenWordTranslate[index].style.display = 'block';
+
+        chosenWordTranslate[index].addEventListener('click', () => {
+          word.style.display = 'block';
+          chosenWordTranslate[index].style.display = 'none';
+        });
+      });
+    });
   }
   
   clear () {

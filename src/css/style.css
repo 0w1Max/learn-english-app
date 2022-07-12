@@ -145,34 +145,10 @@ header {
   margin-left: 10px;
 }
 
-.modal-window {
+.chosen-word--translate {
   display: none;
-  width: 100vw;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  background: rgba(0,0,0,0.8);
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 999;
+  color: #fff;
+  background-color: #06d6a0;
+  padding: 8px;
+  margin-left: 10px;
 }
-  .modal-content {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 80%;
-  }
-    .modal-content > .chosen-word {
-      margin-bottom: 10px;
-    }
-
-  .modal-close {
-    width: 45px;
-    font-size: 24px;
-    position: fixed;
-    right: 30px;
-    top: 30px;
-    height: 45px;
-    
-  }
