@@ -145,10 +145,41 @@ header {
   margin-left: 10px;
 }
 
+.translate-word {
+  color: #fff;
+  background-color: #06d6a0;
+  padding: 8px;
+  margin-left: 10px;
+}
+
 .chosen-word--translate {
   display: none;
   color: #fff;
   background-color: #06d6a0;
   padding: 8px;
   margin-left: 10px;
+}
+
+.modal-window {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: auto;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+input.translate-text {
+  width: 60%;
+  height: 38px;
+}
+
+button.btn-translate-ok {
+  width: 50px;
+  height: 38px;
+  color: #cad2c5;
+  background-color: #2f3e46;
+  border: 1px solid #84a98c;
+  border-radius: 0 10px 10px 0;
 }

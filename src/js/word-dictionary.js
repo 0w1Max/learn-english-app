@@ -5,7 +5,7 @@ const inputTextElement = document.querySelector('input.input-text');
 const inputTextButton = document.querySelector('.btn-input-text');
 const outputTextElement = document.querySelector('.output-text');
 const chosenWordsElement = document.querySelector('.chosen-words');
-let outputWordElement = Array.from(document.querySelectorAll('.output-words'));
+let outputWordElement = Array.from(document.querySelectorAll('.output-word'));
 const saveButton = document.querySelector('.btn-save');
 const firstRowElement = document.querySelector('.row-1');
 const secondRowElement = document.querySelector('.row-2');
@@ -17,6 +17,8 @@ export default class WordDictionary {
   allArrays = [];
   allSelectedWords = [];
   selectedWordsObj = [];
+  translate = '';
+  translateArray = [];
 
   splitText () {
     inputTextButton.addEventListener('click', (evt) => {
@@ -41,6 +43,7 @@ export default class WordDictionary {
     ).join('');
 
     outputTextElement.innerHTML = outputText;
+    this.wordTranslation();
   }
 
   updateElement () {
@@ -54,21 +57,32 @@ export default class WordDictionary {
   outputChosenWords () {
     this.updateElement();
 
-    outputWordElement.map((word) => {
+    outputWordElement.forEach((word, index) => {
       word.addEventListener('click', () => {
+
+        // Логика для ввода перевода слова в input
+        const modalWindow = document.querySelector('.modal-window');
+        const translateInput = document.querySelector('.translate-text');
+        const translateButton = document.querySelector('.btn-translate-ok');
+        modalWindow.style.display = 'flex';
+
         word.classList.add('selected');
         chosenWordsElement.querySelector('h3').textContent = '';
+        
+        translateButton.addEventListener('click', () => {
+          console.log('Click');
+          this.allSelectedWords.push(word.textContent);
 
-        const chosenWordsTemplate =
-          `<span class="chosen-word">${word.textContent}</span>
-          <span class="chosen-word--translate">translate</span>`;
+          const chosenWordsTemplate =
+            `<span class="chosen-word">${word.textContent}</span>
+            <span class="chosen-word--translate">${this.translate}</span>`;
 
-        chosenWordsElement.innerHTML += chosenWordsTemplate;
-        this.allSelectedWords.push(word.textContent);
+          chosenWordsElement.innerHTML += chosenWordsTemplate;
 
-        this.wordTranslation();
+          this.showTranslation();
 
-        console.log(this.allSelectedWords);
+          console.log('index:' + index + ', Array: ' + this.allSelectedWords);
+        }, {once: true});
       });
     });
   }
@@ -77,8 +91,8 @@ export default class WordDictionary {
     saveButton.addEventListener('click', (evt) => {
       evt.preventDefault();
       
-      this.allSelectedWords.forEach((item) => {
-        this.selectedWordsObj.push({index: this.index, word: item})
+      this.allSelectedWords.forEach((item, index) => {
+        this.selectedWordsObj.push({index: this.index, word: item, translate: this.translateArray[index]})
         this.index++;
       });
 
@@ -106,8 +120,31 @@ export default class WordDictionary {
       wordHistoryRowElement.style.display = 'none';
     });
   }
-
+  
   wordTranslation () {
+    outputTextElement.innerHTML +=
+      `<div class="modal-window">
+        <input type="text" placeholder="Введите перевод" class="translate-text">
+        <button type="submit" class="btn-translate-ok">OK</button>
+      </div>`;
+
+    const modalWindow = document.querySelector('.modal-window');
+    const translateInput = document.querySelector('.translate-text');
+    const translateButton = document.querySelector('.btn-translate-ok');
+
+    translateButton.addEventListener('click', (evt) => {
+      evt.preventDefault();
+
+      this.translate = translateInput.value;
+      this.translateArray.push(this.translate);
+      console.log(this.translateArray);
+
+      translateInput.value = '';
+      modalWindow.style.display = 'none';
+    });
+  }
+
+  showTranslation () {
     const chosenWord = Array.from(document.querySelectorAll('.chosen-word'));
     const chosenWordTranslate = document.querySelectorAll('.chosen-word--translate');
 

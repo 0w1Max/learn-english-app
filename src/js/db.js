@@ -19,7 +19,9 @@ function getData () {
     .then(words => {
       words.forEach(arr =>
         arr.forEach((word) =>
-          wordHistoryElement.innerHTML += `<span class="chosen-word">${word.word}</span>`
+          wordHistoryElement.innerHTML +=
+            `<span class="chosen-word">${word.word}</span>
+            <span class="translate-word">${word.translate}</span>`
       ))
     })
 }
