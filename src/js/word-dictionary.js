@@ -25,7 +25,7 @@ export default class WordDictionary {
       evt.preventDefault();
       
       if (inputTextElement.value) {
-        const textArr = inputTextElement.value.split(' ');
+        const textArr = inputTextElement.value.split(/[\s.,]\s/g);
 
         this.pushContent(textArr);
         this.allArrays.push(textArr);
