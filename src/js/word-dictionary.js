@@ -25,10 +25,18 @@ export default class WordDictionary {
       evt.preventDefault();
       
       if (inputTextElement.value) {
-        const textArr = inputTextElement.value.split(/[\s.,]\s/g);
+        const textArr = inputTextElement.value.split(/\W/g);
 
-        this.pushContent(textArr);
-        this.allArrays.push(textArr);
+        for (let i = 0; i < textArr.length; i++) {
+          if (textArr[i] === '') {
+            textArr.splice(i, 1)
+          }
+        }
+
+        console.log(textArr);
+
+        this.pushContent(textArr)
+        this.allArrays.push(textArr)
       } else {
         inputTextElement.placeholder = 'Вы не ввели текст!';
       }
