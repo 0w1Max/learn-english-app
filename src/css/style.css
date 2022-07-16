@@ -80,6 +80,14 @@ header {
     background-color: #84a98c;
     padding-top: 20px;
   }
+  
+  .translate-form {
+    display: none;
+    align-items: center;
+    width: 45vw;
+    background-color: #84a98c;
+    padding-top: 20px;
+  }
 
   .save-words {
     width: 10vw;
